@@ -98,7 +98,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                input message: 'Deploy to production?', ok: 'Deploy'
+                //input message: 'Deploy to production?', ok: 'Deploy'
                 echo 'Deploying to production...'
                // sh 'scp $ARCHIVE_DIR/$PROJECT_NAME.tar.gz user@prod-server:/deployments/'
                // sh 'ssh user@prod-server "cd /deployments && tar -xzvf $PROJECT_NAME.tar.gz && ./deploy.sh"'
