@@ -41,22 +41,12 @@ pipeline {
                 echo 'Running static code analysis...'
                // sh './venv/bin/flake8 .'
             }
-            post {
-                always {
-                   // archiveArtifacts artifacts: '**/flake8.log', allowEmptyArchive: true
-                }
-            }
         }
 
         stage('Build') {
             steps {
                 echo 'Building the project...'
                // sh './venv/bin/python setup.py build'
-            }
-            post {
-                success {
-                   // archiveArtifacts artifacts: '$BUILD_DIR/**/*', onlyIfSuccessful: true
-                }
             }
         }
 
@@ -65,22 +55,12 @@ pipeline {
                 echo 'Running unit tests...'
                // sh './venv/bin/pytest tests/unit --junitxml=unit-test-report.xml'
             }
-            post {
-                always {
-                  //  junit 'unit-test-report.xml'
-                }
-            }
         }
 
         stage('Integration Tests') {
             steps {
                 echo 'Running integration tests...'
                 //sh './venv/bin/pytest tests/integration --junitxml=integration-test-report.xml'
-            }
-            post {
-                always {
-                    //junit 'integration-test-report.xml'
-                }
             }
         }
 
@@ -110,11 +90,6 @@ pipeline {
             steps {
                 echo 'Running automated acceptance tests...'
                // sh './venv/bin/pytest tests/acceptance --junitxml=acceptance-test-report.xml'
-            }
-            post {
-                always {
-                   // junit 'acceptance-test-report.xml'
-                }
             }
         }
 
